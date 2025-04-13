@@ -10,12 +10,14 @@ const questionSchema = new mongoose.Schema(
     goodAns: {
       type: String,
       required: true,
-      trim: true,
     },
     badAns: {
       type: String,
       required: true,
-      trim: true,
+    },
+    userAns: {
+      type: String,
+      required: true,
     },
     quizId: {
       type: mongoose.Schema.Types.ObjectId,
