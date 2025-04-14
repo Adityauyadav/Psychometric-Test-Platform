@@ -126,7 +126,7 @@ export const loginUser = async (req, res) => {
     const token = jwt.sign(
       payload,
       process.env.JWT_SECRET || "your_jwt_secret_key",
-      { expiresIn: "24h" } // Token expires in 24 hours
+      { expiresIn: "48h" } // Token expires in 24 hours
     );
 
     // Return success response with token

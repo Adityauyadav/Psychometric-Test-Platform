@@ -198,10 +198,10 @@ export const addUserToQuiz = async (req, res) => {
 export const addQuestion = async (req, res) => {
   try {
     // Extract question data from request body
-    const { question, goodAns, badAns, quizId, userAns } = req.body;
+    const { question, goodAns, badAns, quizId } = req.body;
 
     // Validate required fields
-    if (!question || !goodAns || !badAns || !quizId || !userAns) {
+    if (!question || !goodAns || !badAns || !quizId) {
       return res.status(400).json({
         success: false,
         message:
@@ -259,7 +259,6 @@ export const addQuestion = async (req, res) => {
       question,
       goodAns,
       badAns,
-      userAns,
       quizId,
       takenBy: [], // Initialize with empty array
     });
@@ -278,7 +277,6 @@ export const addQuestion = async (req, res) => {
         badAns: newQuestion.badAns,
         quizId: newQuestion.quizId,
         createdAt: newQuestion.createdAt,
-        userAns: newQuestion.userAns,
       },
     });
   } catch (error) {
@@ -406,7 +404,7 @@ export const getQuizQuestions = async (req, res) => {
 export const addUserScoreToQuestion = async (req, res) => {
   try {
     // Extract data from request body
-    const { questionId } = req.body;
+    const { questionId, userAns } = req.body;
 
     // Get userId from request body or use authenticated user's ID
     let userId = req.body.userId;
@@ -439,7 +437,7 @@ export const addUserScoreToQuestion = async (req, res) => {
       {
         good: question.goodAns,
         bad: question.badAns,
-        user: question.userAns,
+        user: userAns,
       },
       {
         headers: {

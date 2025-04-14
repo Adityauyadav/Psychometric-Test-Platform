@@ -1,0 +1,293 @@
+{
+	"info": {
+		"_postman_id": "d3515a06-05df-4ec6-8e83-8f8453b8f9b4",
+		"name": "Psychometric-Test-Platform",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25336846"
+	},
+	"item": [
+		{
+			"name": "NLP Reqs",
+			"item": [
+				{
+					"name": "evaluation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"good\": \"Flask is a lightweight and flexible Python web framework used to build web applications and APIs. It’s known for its simplicity, minimalism, and ease of use, making it great for beginners and professionals alike. Flask supports extensions to add more functionality like database integration, authentication, etc.\",\n    \"bad\": \"Flask is a Python library for making desktop apps. It's used for designing UI with buttons and stuff, like Tkinter.\",\n    \"user\": \"Flask is a lightweight and flexible Python web framework used to build web applications and APIs. It’s known for its simplicity, minimalism, and ease of use, making it great for beginners and professionals alike. Flask supports extensions to add more functionality like database integration, authentication, etc.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/evaluate",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"evaluate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"shreyash\",\n    \"email\": \"shreyash@test.com\",\n    \"firstName\": \"Shreyash\",\n    \"lastName\": \"Chandra\",\n    \"password\": \"123456\",\n    \"userType\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/user/signup",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"user",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Signin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"shreyash@test.com\",\n    \"password\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/user/signin",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"user",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Quiz",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2ZhYWI2ZTY2MTM0YzAyODM2ZjE0MWIiLCJlbWFpbCI6InNocmV5YXNoQHRlc3QuY29tIiwidXNlcm5hbWUiOiJzaHJleWFzaCIsInVzZXJUeXBlIjoxLCJpYXQiOjE3NDQ0ODExMzgsImV4cCI6MTc0NDU2NzUzOH0.9h7ytOfo1n0P5kE6uQKgvGVezbrQ8HV4UUk-Hg4VThg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"quizName\": \"Personality Assessment\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/quiz/add",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"quiz",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Taken By To Quiz",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2ZhYWI2ZTY2MTM0YzAyODM2ZjE0MWIiLCJlbWFpbCI6InNocmV5YXNoQHRlc3QuY29tIiwidXNlcm5hbWUiOiJzaHJleWFzaCIsInVzZXJUeXBlIjoxLCJpYXQiOjE3NDQ0ODExMzgsImV4cCI6MTc0NDU2NzUzOH0.9h7ytOfo1n0P5kE6uQKgvGVezbrQ8HV4UUk-Hg4VThg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"quizId\": \"67faab8566134c02836f1420\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/quiz/add/user",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"quiz",
+						"add",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Question To Quiz",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2ZhYWI2ZTY2MTM0YzAyODM2ZjE0MWIiLCJlbWFpbCI6InNocmV5YXNoQHRlc3QuY29tIiwidXNlcm5hbWUiOiJzaHJleWFzaCIsInVzZXJUeXBlIjoxLCJpYXQiOjE3NDQ2MTE1NzcsImV4cCI6MTc0NDc4NDM3N30.ss55Pp0RIe7cQj--gjiJr27Khmz-USmIeQrHslDqto4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"question\": \"Explain async/await in js.\",\n    \"goodAns\": \"async/await is syntactic sugar over Promises in JavaScript, introduced in ES2017. It allows asynchronous code to be written in a more synchronous and readable manner. An async function returns a Promise.The await keyword pauses the execution of the function until the Promise is resolved or rejected.This makes code cleaner, avoids “callback hell,” and improves error handling via try/catch.\",\n    \"badAns\": \"async/await just waits for stuff… I think it makes your function slow because it stops everything. You use await before any function that takes time… I don’t really get how it’s better than setTimeout. And like, you always need then anyway so what’s the point?\",\n    \"quizId\": \"67faab8566134c02836f1420\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/quiz/add/question",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"quiz",
+						"add",
+						"question"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Quiz Question",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2ZhYWI2ZTY2MTM0YzAyODM2ZjE0MWIiLCJlbWFpbCI6InNocmV5YXNoQHRlc3QuY29tIiwidXNlcm5hbWUiOiJzaHJleWFzaCIsInVzZXJUeXBlIjoxLCJpYXQiOjE3NDQ2MDgwNjIsImV4cCI6MTc0NDY5NDQ2Mn0.T_VZvm12Ugh4bLbKcore_5NLNC0tW8Pchbnr9YgI2Ac",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{local}}/quiz/all/questions?quizId=67faab8566134c02836f1420",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"quiz",
+						"all",
+						"questions"
+					],
+					"query": [
+						{
+							"key": "quizId",
+							"value": "67faab8566134c02836f1420"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Score to question",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2ZhYWI2ZTY2MTM0YzAyODM2ZjE0MWIiLCJlbWFpbCI6InNocmV5YXNoQHRlc3QuY29tIiwidXNlcm5hbWUiOiJzaHJleWFzaCIsInVzZXJUeXBlIjoxLCJpYXQiOjE3NDQ2MDgwNjIsImV4cCI6MTc0NDY5NDQ2Mn0.T_VZvm12Ugh4bLbKcore_5NLNC0tW8Pchbnr9YgI2Ac",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"questionId\": \"67fca9bd63cab9e442ddb18e\",\n    \"userAns\": \"So like, async/await is just a way to do things that take time, like fetch from a server. It looks nicer than chaining .then()s, and you write it like normal code. But yeah, under the hood it’s still Promises so… not that big of a deal? Useful sometimes, but not magic or anything.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/quiz/add/score",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"quiz",
+						"add",
+						"score"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

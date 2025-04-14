@@ -15,10 +15,7 @@ const questionSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    userAns: {
-      type: String,
-      required: true,
-    },
+
     quizId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Quiz", // This references the Quiz model

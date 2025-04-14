@@ -8,8 +8,8 @@ export const connectDB = async () => {
 
     // Connect to MongoDB with specified options
     const conn = await connect(dbURI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+      // useNewUrlParser: true,
+      // useUnifiedTopology: true,
       // Uncomment if needed in your version of Mongoose:
       // useCreateIndex: true,
       // useFindAndModify: false,
