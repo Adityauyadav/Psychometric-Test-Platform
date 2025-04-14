@@ -2,6 +2,7 @@ import { Quiz } from "../models/quiz.model.js";
 import { User } from "../models/user.model.js"; // Adjust the path as needed
 import mongoose from "mongoose";
 import { Question } from "../models/question.model.js";
+import axios from "axios";
 
 export const addQuiz = async (req, res) => {
   try {
@@ -405,7 +406,7 @@ export const getQuizQuestions = async (req, res) => {
 export const addUserScoreToQuestion = async (req, res) => {
   try {
     // Extract data from request body
-    const { questionId, score } = req.body;
+    const { questionId } = req.body;
 
     // Get userId from request body or use authenticated user's ID
     let userId = req.body.userId;
@@ -423,6 +424,32 @@ export const addUserScoreToQuestion = async (req, res) => {
       });
     }
 
+    // Check if the question exists
+    const question = await Question.findById(questionId);
+
+    if (!question) {
+      return res.status(404).json({
+        success: false,
+        message: "Question not found",
+      });
+    }
+
+    const scoreGot = await axios.post(
+      `${process.env.NLP_URL}/evaluate`,
+      {
+        good: question.goodAns,
+        bad: question.badAns,
+        user: question.userAns,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const score = scoreGot.data.score;
+    console.log("scoreGot", scoreGot);
+    console.log("score", score);
     if (score === undefined || score === null) {
       return res.status(400).json({
         success: false,
@@ -458,16 +485,6 @@ export const addUserScoreToQuestion = async (req, res) => {
       return res.status(400).json({
         success: false,
         message: "Score must be a number",
-      });
-    }
-
-    // Check if the question exists
-    const question = await Question.findById(questionId);
-
-    if (!question) {
-      return res.status(404).json({
-        success: false,
-        message: "Question not found",
       });
     }
 
